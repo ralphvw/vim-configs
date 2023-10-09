@@ -1,0 +1,61 @@
+" Disable compatibility with vi which can cause unexpected issues.
+set nocompatible
+
+" Set tabstop (width of a tab character) to 2 spaces
+set tabstop=2
+
+" Set the number of spaces used for each level of indentation
+set shiftwidth=2
+
+" Use spaces instead of tabs for indentation
+set expandtab
+
+" Enable type file detection. Vim will be able to try to detect the type of file in use.
+filetype on
+
+" Enable plugins and load plugin for the detected file type.
+filetype plugin on
+
+" Load an indent file for the detected file type.
+filetype indent on
+
+" Add numbers to each line on the left-hand side.
+set number
+
+" STATUS LINE ------------------------------------------------------------ {{{
+
+" Clear status line when vimrc is reloaded.
+set statusline=
+
+" Status line left side.
+set statusline+=\ %F\ %M\ %Y\ %R
+
+" Use a divider to separate the left side from the right side.
+set statusline+=%=
+
+" Status line right side.
+set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
+
+" Show the status on the second to last line.
+set laststatus=2
+
+" }}}
+"
+  call plug#begin('~/.vim/plugged')
+" 
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+" Use release branch (recommended)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Or build from source code by using npm
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'}"
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'APZelos/blamer.nvim'
+Plug 'sbdchd/neoformat'
+ call plug#end()
+
+let g:blamer_enabled = 1
+let g:neoformat_try_node_exe = 1
+autocmd BufWritePre,TextChanged,InsertLeave *.js Neoformat
+inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"

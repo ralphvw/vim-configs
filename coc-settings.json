@@ -58,6 +58,8 @@
   "diagnostic.virtualTextPrefix": " ❯❯❯ ",
   "diagnostic.virtualText": true,
   "codeLens.enable": true,
+  "eslint.enable": true,
+  "eslint.run": "onSave",
   "list.previewHighlightGroup": "Statement",
   "list.nextKeymap": "<C-e>",
   "list.previousKeymap": "<C-u>",
@@ -258,11 +260,6 @@
       "filetypes": [
         "go"
       ],
-      "initializationOptions": {
-        "gocodeCompletionEnabled": true,
-        "diagnosticsEnabled": true,
-        "lintTool": "golint"
-      }
     },
     "bash": {
       "command": "bash-language-server",

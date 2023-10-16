@@ -59,6 +59,8 @@ Plug 'iamcco/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
 let g:neoformat_try_node_exe = 1
 autocmd BufRead,BufNewFile *.js set filetype=javascript
 autocmd BufWritePre,TextChanged,InsertLeave *.js Neoformat
+autocmd BufWritePre,TextChanged,InsertLeave *.tsx Neoformat
+autocmd BufWritePre,TextChanged,InsertLeave *.ts Neoformat
 inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 set viminfo='100,<1000
 
